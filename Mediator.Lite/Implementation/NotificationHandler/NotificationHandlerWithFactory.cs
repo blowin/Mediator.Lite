@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Mediator.Lite.Abstraction;
 
 namespace Mediator.Lite.Implementation.NotificationHandler

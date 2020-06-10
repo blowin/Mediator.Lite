@@ -30,9 +30,10 @@ namespace Mediator.Lite.Sample.Samples
         
         public void Run()
         {
-            var mediator = new MediatorBuilder()
+            var mediator = new DictionaryServiceFactoryBuilder()
                 .AddNotificationHandlerAsLazy(() => new LazyHandler())
-                .Builder();
+                .Builder()
+                .AsMediator();
             
             Console.WriteLine("Before publish");
 

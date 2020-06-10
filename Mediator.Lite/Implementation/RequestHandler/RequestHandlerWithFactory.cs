@@ -1,6 +1,4 @@
-﻿using System;
-using Mediator.Lite.Abstraction;
-using Mediator.Lite.Implementation.NotificationHandler;
+﻿using Mediator.Lite.Abstraction;
 
 namespace Mediator.Lite.Implementation.RequestHandler
 {

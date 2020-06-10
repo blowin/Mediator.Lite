@@ -7,11 +7,11 @@ namespace Mediator.Lite.Extension
 {
     public partial class MediatorBuilderExt
     {
-        public static MediatorBuilder AddNotificationHandler<TNotification>(this MediatorBuilder self, INotificationHandler<TNotification> handler) 
+        public static DictionaryServiceFactoryBuilder AddNotificationHandler<TNotification>(this DictionaryServiceFactoryBuilder self, INotificationHandler<TNotification> handler) 
             where TNotification : INotification =>
             self.AddNotificationHandler(typeof(TNotification), handler);
 
-        public static MediatorBuilder AddNotificationHandlerAsLazy<TNotification>(this MediatorBuilder self,
+        public static DictionaryServiceFactoryBuilder AddNotificationHandlerAsLazy<TNotification>(this DictionaryServiceFactoryBuilder self,
             Func<INotificationHandler<TNotification>> handlerFactory, bool isThreadSafe = true)
             where TNotification : INotification
         {

@@ -7,11 +7,11 @@ namespace Mediator.Lite.Extension
 {
     public partial class MediatorBuilderExt
     {
-        public static MediatorBuilder AddRequestHandler<TRequest, TResponse>(this MediatorBuilder self, IRequestHandler<TRequest, TResponse> handler) 
+        public static DictionaryServiceFactoryBuilder AddRequestHandler<TRequest, TResponse>(this DictionaryServiceFactoryBuilder self, IRequestHandler<TRequest, TResponse> handler) 
             where TRequest : IRequest<TResponse> =>
             self.AddRequestHandler(typeof(TRequest), handler);
 
-        public static MediatorBuilder AddRequestHandlerAsLazy<TRequest, TResponse>(this MediatorBuilder self,
+        public static DictionaryServiceFactoryBuilder AddRequestHandlerAsLazy<TRequest, TResponse>(this DictionaryServiceFactoryBuilder self,
             Func<IRequestHandler<TRequest, TResponse>> handlerFactory, bool isThreadSafe = true)
             where TRequest : IRequest<TResponse>
         {

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
 using Mediator.Lite.Abstraction;
-using Mediator.Lite.Extension;
+using Mediator.Lite.Extension.Microsoft.DependencyInjection;
 using Mediator.Lite.Sample.Data;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Mediator.Lite.Sample.Samples
+namespace Mediator.Lite.Sample.Samples.Di
 {
-    [Description("RequestSample")]
-    public class RequestSample : ISample
+    [Description("DiRequestSample")]
+    public class DiRequestSample : ISample
     {
         private class AppendHelloRequestHandler : IRequestHandler<LoginRequest, string>
         {
@@ -16,10 +17,12 @@ namespace Mediator.Lite.Sample.Samples
 
         public void Run()
         {
-            var mediator = new DictionaryServiceFactoryBuilder()
-                .AddRequestHandler(new AppendHelloRequestHandler())
-                .Builder()
-                .AsMediator();
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<IRequestHandler<LoginRequest, string>, AppendHelloRequestHandler>()
+                .TryAddMediatorLiteImplementation(ServiceLifetime.Singleton)
+                .BuildServiceProvider();
+
+            var mediator = serviceProvider.GetRequiredService<IMediator>();
             
             var loginRequest = new LoginRequest("Anna");
 

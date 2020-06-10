@@ -6,7 +6,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Mediator.Lite.Extension.Microsoft.DependencyInjection\Mediator.Lite.Extension.Microsoft.DependencyInjection.csproj" />
       <ProjectReference Include="..\Mediator.Lite\Mediator.Lite.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.5" />
     </ItemGroup>
 
 </Project>

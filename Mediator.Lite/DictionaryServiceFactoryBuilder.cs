@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using Mediator.Lite.Abstraction;
+using Mediator.Lite.Implementation.ServiceFactory;
 
 namespace Mediator.Lite
 {
-    public sealed class MediatorBuilder
+    public sealed class DictionaryServiceFactoryBuilder
     {
         private readonly Dictionary<Type, IRequestHandler> _requestHand;
         private readonly Dictionary<Type, List<INotificationHandler>> _notificationHandlers;
 
-        public MediatorBuilder()
+        public DictionaryServiceFactoryBuilder()
         {
             _requestHand = new Dictionary<Type, IRequestHandler>();
             _notificationHandlers = new Dictionary<Type, List<INotificationHandler>>();
         }
         
-        public MediatorBuilder AddRequestHandler(Type type, IRequestHandler handler)
+        public DictionaryServiceFactoryBuilder AddRequestHandler(Type type, IRequestHandler handler)
         {
             _requestHand.Add(type, handler);
             return this;
         }
         
-        public MediatorBuilder AddNotificationHandler(Type type, INotificationHandler handler)
+        public DictionaryServiceFactoryBuilder AddNotificationHandler(Type type, INotificationHandler handler)
         {
             if (_notificationHandlers.TryGetValue(type, out var store))
             {
@@ -38,9 +39,9 @@ namespace Mediator.Lite
             return this;
         }
 
-        public IMediator Builder()
+        public DictionaryServiceFactory Builder()
         {
-            return new Implementation.Mediator(_requestHand, _notificationHandlers);
+            return new DictionaryServiceFactory(_requestHand, _notificationHandlers);
         }
     }
 }
