@@ -30,12 +30,13 @@ namespace Mediator.Lite.Sample.Samples
 
         public void Run()
         {
-            var mediator = new MediatorBuilder()
+            var mediator = new DictionaryServiceFactoryBuilder()
                 .AddNotificationHandler(new LineRequestHandler())
                 .AddNotificationHandler(new PrintNotificationHandler())
                 .AddNotificationHandler(new LineRequestHandler())
                 
-                .Builder();
+                .Builder()
+                .AsMediator();
             
             var loginRequest = new LoginRequest("Anna");
 
