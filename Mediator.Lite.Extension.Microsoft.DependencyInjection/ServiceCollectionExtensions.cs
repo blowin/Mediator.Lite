@@ -36,21 +36,5 @@ namespace Mediator.Lite.Extension.Microsoft.DependencyInjection
             self.TryAdd(new ServiceDescriptor(typeof(IMediator), typeof(Mediator<DiServiceFactory>), lifetime));
             return self;
         }
-        
-        private sealed class DiServiceFactory : IServiceFactory
-        {
-            private readonly IServiceProvider _provider;
-
-            public DiServiceFactory(IServiceProvider provider)
-            {
-                _provider = provider;
-            }
-            public IEnumerable<INotificationHandler<TNotification>> GetNotificationHandlers<TNotification>() where TNotification : INotification 
-                => _provider.GetServices<INotificationHandler<TNotification>>();
-
-            public IRequestHandler<TRequest, TResponse> GetRequestHandler<TRequest, TResponse>()
-                where TRequest : IRequest<TResponse>
-                => _provider.GetRequiredService<IRequestHandler<TRequest, TResponse>>();
-        }
     }
 }
