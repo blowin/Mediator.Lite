@@ -32,7 +32,7 @@ namespace Mediator.Lite.Sample.Samples
         {
             var mediator = new DictionaryServiceFactoryBuilder()
                 .AddNotificationHandlerAsLazy(() => new LazyHandler())
-                .Builder()
+                .Build()
                 .AsMediator();
             
             Console.WriteLine("Before publish");

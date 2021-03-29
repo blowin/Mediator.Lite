@@ -18,7 +18,7 @@ namespace Mediator.Lite.Sample.Samples
         {
             var mediator = new DictionaryServiceFactoryBuilder()
                 .AddRequestHandler(new AppendHelloRequestHandler())
-                .Builder()
+                .Build()
                 .AsMediator();
             
             var loginRequest = new LoginRequest("Anna");

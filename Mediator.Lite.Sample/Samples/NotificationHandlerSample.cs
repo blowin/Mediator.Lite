@@ -35,7 +35,7 @@ namespace Mediator.Lite.Sample.Samples
                 .AddNotificationHandler(new PrintNotificationHandler())
                 .AddNotificationHandler(new LineRequestHandler())
                 
-                .Builder()
+                .Build()
                 .AsMediator();
             
             var loginRequest = new LoginRequest("Anna");

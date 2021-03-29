@@ -39,7 +39,7 @@ namespace Mediator.Lite
             return this;
         }
 
-        public DictionaryServiceFactory Builder()
+        public DictionaryServiceFactory Build()
         {
             return new DictionaryServiceFactory(_requestHand, _notificationHandlers);
         }
