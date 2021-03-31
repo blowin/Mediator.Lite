@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Mediator.Lite.Abstraction;
+using Mediator.Lite.Extension;
 using Mediator.Lite.Extension.Microsoft.DependencyInjection;
 using Mediator.Lite.Sample.Data;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,7 +27,7 @@ namespace Mediator.Lite.Sample.Samples.Di
             
             var loginRequest = new LoginRequest("Anna");
 
-            mediator.Send(loginRequest, out string response);
+            var response = mediator.For<string>().Send(loginRequest);
             
             Console.WriteLine(response);
         }
