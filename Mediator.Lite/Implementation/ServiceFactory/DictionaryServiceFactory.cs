@@ -28,7 +28,8 @@ namespace Mediator.Lite.Implementation.ServiceFactory
             throw new InvalidOperationException("Not found handlers for " + typeof(TNotification).Name);
         }
 
-        public IRequestHandler<TRequest, TResponse> GetRequestHandler<TRequest, TResponse>() where TRequest : IRequest<TResponse>
+        public IRequestHandler<TRequest, TResponse> GetRequestHandler<TRequest, TResponse>() 
+            where TRequest : IRequest<TResponse>
         {
             if (_requestHandlers.TryGetValue(typeof(TRequest).GetHashCode(), out var handler))
                 return (IRequestHandler<TRequest, TResponse>)handler;
