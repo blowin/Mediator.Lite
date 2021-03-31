@@ -1,5 +1,8 @@
 # Mediator.Lite
 
+Approach with 'out' parameter provide use struct as request without boxing
+
+
 Request and notification class:
 
 ```c#
@@ -21,15 +24,9 @@ Request handler
 ```c#
 private class AppendHelloRequestHandler : IRequestHandler<LoginRequest, string>
 {
-public string Handle(LoginRequest request) => "******* Hello " + request.Name + " from AppendHelloRequestHandler *******";
+    public string Handle(LoginRequest request) => "******* Hello " + request.Name + " from AppendHelloRequestHandler *******";
 }
-```
 
-
-
-Usage
-
-```c#
 var mediator = new DictionaryServiceFactoryBuilder()
                 .AddRequestHandler(new AppendHelloRequestHandler())
                 .Build()
@@ -42,7 +39,7 @@ mediator.Send(loginRequest, out string response);
 Console.WriteLine(response);
 ```
 
-With For shortcut
+With 'For' shortcut
 
 ```c#
 var mediator = new DictionaryServiceFactoryBuilder()
