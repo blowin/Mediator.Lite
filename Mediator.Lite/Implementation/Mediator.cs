@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Mediator.Lite.Abstraction;
 
 namespace Mediator.Lite.Implementation
@@ -23,6 +24,13 @@ namespace Mediator.Lite.Implementation
         {
             var handler = _factory.GetRequestHandler<TRequest, TResponse>();
             response = handler.Handle(request);
+        }
+
+        public void SendAsync<TRequest, TResponse>(TRequest request, out ValueTask<TResponse> response, CancellationToken token = default) 
+            where TRequest : IAsyncRequest<TResponse>
+        {
+            request.Token = token;
+            Send(request, out response);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace Mediator.Lite.Abstraction
 {
@@ -9,5 +10,8 @@ namespace Mediator.Lite.Abstraction
         
         void Send<TRequest, TResponse>(TRequest request, out TResponse response) 
             where TRequest : IRequest<TResponse>;
+
+        void SendAsync<TRequest, TResponse>(TRequest request, out ValueTask<TResponse> response, CancellationToken token = default)
+            where TRequest : IAsyncRequest<TResponse>;
     }
 }
